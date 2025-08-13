@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :player_one_id, "Player One" %>
-    <%= form.collection_select :player_one_id, Member.all, :id, :name %>
+    <%= form.collection_select :player_one_id, Member.order(:current_rank), :id, :name %>
   </div>
 
   <div>
     <%= form.label :player_two_id, "Player Two" %>
-    <%= form.collection_select :player_two_id, Member.all, :id, :name %>
+    <%= form.collection_select :player_two_id, Member.order(:current_rank), :id, :name %>
   </div>
 
   <div>

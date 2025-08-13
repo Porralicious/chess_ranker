@@ -24,8 +24,8 @@ class Match < ApplicationRecord
         else
             return if player_two.current_rank < player_one.current_rank
 
-            shift_down_by_one(player_one)
             shift_up_by_x(player_two, player_one)
+            shift_down_by_one(player_one)
         end
     end
 
