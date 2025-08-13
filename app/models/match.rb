@@ -10,18 +10,20 @@ class Match < ApplicationRecord
     def calculate_rank
         #draw
         if winner.nil?
-            return (player_one.current_rank - player_two.current_rank).abs == 1
+            return if (player_one.current_rank - player_two.current_rank).abs == 1
             
             shift_up_by_one(player_two) if player_one.current_rank < player_two.current_rank
             shift_up_by_one(player_one) if player_one.current_rank > player_two.current_rank
         #player one win
         elsif winner == player_one
-            return player_one.current_rank < player_two.current_rank
+            return if player_one.current_rank < player_two.current_rank
+
             shift_down_by_one(player_two)
             shift_up_by_x(player_one, player_two)
         #player two win
         else
-            return player_two.current_rank < player_one.current_rank
+            return if player_two.current_rank < player_one.current_rank
+
             shift_down_by_one(player_one)
             shift_up_by_x(player_two, player_one)
         end
