@@ -65,6 +65,6 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.expect(match: [ :player_one_id, :player_two_id, :winner_id ])
+      params.expect(match: [ :player_one_id, :player_two_id, :winner_result ])
     end
 end
