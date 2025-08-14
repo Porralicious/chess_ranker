@@ -3,6 +3,9 @@ class Match < ApplicationRecord
     belongs_to :player_two, class_name: "Member"
     belongs_to :winner, class_name: "Member", optional: true
 
+    attr_accessor :winner_result
+
+    before_validation :map_winner_result
     validate :different_players
 
     after_create :calculate_rank
@@ -58,6 +61,17 @@ class Match < ApplicationRecord
         end
         winning_player.current_rank -= shift_by
         winning_player.save
+    end
+
+    def map_winner_result
+        case winner_result
+        when "player_one"
+            self.winner_id = player_one_id
+        when "player_two"
+            self.winner_id = player_two_id
+        when "draw"
+            self.winner_id = nil
+        end
     end
 
     def different_players
