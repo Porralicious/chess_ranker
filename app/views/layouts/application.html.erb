@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-100">
   <head>
     <title><%= content_for(:title) || "Chess Ranker" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,9 +22,50 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="h-full">
+    <div class="min-h-full">
+      <!-- NAVBAR -->
+      <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <!-- Left side -->
+            <div class="flex items-center">
+              <div class="shrink-0">
+                <span class="text-2xl text-white">♔</span>
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                  <%= link_to "Dashboard", root_path,
+                        class: "rounded-md px-3 py-2 text-sm font-medium #{current_page?(root_path) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
+
+                  <%= link_to "Members", members_path,
+                        class: "rounded-md px-3 py-2 text-sm font-medium #{current_page?(members_path) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
+
+                  <%= link_to "Matches", matches_path,
+                        class: "rounded-md px-3 py-2 text-sm font-medium #{current_page?(matches_path) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- HEADER -->
+      <header class="bg-white shadow-sm">
+        <div class="flex flex-row justify-between mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            <%= content_for?(:page_title) ? yield(:page_title) : "Dashboard" %>
+          </h1>
+          <%= content_for?(:page_cta) ? yield(:page_cta) : nil %>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <%= yield %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
