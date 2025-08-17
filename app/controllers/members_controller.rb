@@ -6,6 +6,10 @@ class MembersController < ApplicationController
     end
 
     def show
+        @recent_matches = Match
+            .where("player_one_id = :id OR player_two_id = :id", id: @member.id)
+            .order(created_at: :desc)
+            .limit(5)
     end
 
     def new
