@@ -49,9 +49,11 @@
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
               <%= link_to "✏️", edit_member_path(member), class: "mr-2", onclick: "event.stopPropagation();" %>
-              <%= link_to "🗑️", member, 
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                    onclick: "event.stopPropagation();" %>
+              <%= button_to "🗑️", member_path(member),
+                method: :delete,
+                data: { turbo_confirm: "Are you sure?" },
+                form: { class: "inline" },
+                onclick: "event.stopPropagation();" %>
             </td>
           </tr>
         <% end %>

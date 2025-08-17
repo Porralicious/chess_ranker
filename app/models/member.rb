@@ -8,8 +8,17 @@ class Member < ApplicationRecord
         class_name: "Match", 
         foreign_key: "player_two_id", 
         dependent: :destroy
-        
+
+    after_destroy :shift_lower_ranks_up
+
     def full_name
         self.name + ' ' + self.surname
     end
+
+    private
+
+    def shift_lower_ranks_up
+        Member.where("current_rank > ?", current_rank).update_all("current_rank = current_rank - 1")
+    end
 end
+
