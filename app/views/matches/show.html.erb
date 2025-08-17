@@ -1,10 +1,13 @@
+<% content_for :page_title do %>
+  Match <%=@match.id%>
+<% end %>
+<% content_for :page_cta do %>
+  <div>
+    <%= link_to "Back to matches", matches_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow" %>
+  </div>
+<% end %>
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @match %>
 
-<div>
-  <%= link_to "Edit this match", edit_match_path(@match) %> |
-  <%= link_to "Back to matches", matches_path %>
-
-  <%= button_to "Destroy this match", @match, method: :delete %>
-</div>

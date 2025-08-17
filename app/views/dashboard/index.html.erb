@@ -21,7 +21,10 @@
               else "hover:bg-gray-50"
             end %>
 
-            <tr class="<%= row_classes %>">
+            <tr class="<%= row_classes %>"
+              onclick="window.location='<%= member_path(member) %>'"
+              class="cursor-pointer hover:bg-gray-50 transition"
+            >
               <td class="px-6 py-4 flex items-center space-x-2">
                 <% if i == 0 %> 🥇 <% elsif i == 1 %> 🥈 <% elsif i == 2 %> 🥉 <% else %> <%= i+1 %> <% end %>
               </td>
