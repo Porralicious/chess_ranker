@@ -9,6 +9,7 @@ class Match < ApplicationRecord
     validate :different_players
 
     after_create :calculate_rank
+    after_create :increment_games_played  
 
     def calculate_rank
         #draw
@@ -36,7 +37,7 @@ class Match < ApplicationRecord
 
     def shift_up_by_one(player)
         rank = player.current_rank
-        old_rank_player = Member.find_by(current_rank: rank)
+        old_rank_player = Member.find_by(current_rank: rank - 1)
         old_rank_player.current_rank += 1
         old_rank_player.save
         player.current_rank -= 1
@@ -72,6 +73,11 @@ class Match < ApplicationRecord
         when "draw"
             self.winner_id = nil
         end
+    end
+
+    def increment_games_played
+        player_one.increment!(:number_of_club_games_played)
+        player_two.increment!(:number_of_club_games_played)
     end
 
     def different_players
