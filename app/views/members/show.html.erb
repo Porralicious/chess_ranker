@@ -1,10 +1,11 @@
+<% content_for :page_title do %>
+  <%=@member.full_name%>
+<% end %>
+<% content_for :page_cta do %>
+  <div>
+    <%= link_to "Back to members", members_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow" %>
+  </div>
+<% end %>
 <p style="color: green"><%= notice %></p>
 
 <%= render @member %>
-
-<div>
-  <%= link_to "Edit this member", edit_member_path(@member) %> |
-  <%= link_to "Back to members", members_path %>
-
-  <%= button_to "Destroy this member", @member, method: :delete %>
-</div>
