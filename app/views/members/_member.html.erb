@@ -1,32 +1,33 @@
-<div id="<%= dom_id member %>">
-  <p>
-    <strong>Name:</strong>
-    <%= member.name %>
-  </p>
+<div id="<%= dom_id member %>" class="bg-white shadow rounded-lg p-6 mb-4">
+  <dl class="divide-y divide-gray-200">
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Name</dt>
+      <dd class="text-sm text-gray-900"><%= member.name %></dd>
+    </div>
 
-  <p>
-    <strong>Surname:</strong>
-    <%= member.surname %>
-  </p>
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Surname</dt>
+      <dd class="text-sm text-gray-900"><%= member.surname %></dd>
+    </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= member.email %>
-  </p>
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Email</dt>
+      <dd class="text-sm text-gray-900"><%= member.email %></dd>
+    </div>
 
-  <p>
-    <strong>Birthday:</strong>
-    <%= member.birthday %>
-  </p>
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Birthday</dt>
+      <dd class="text-sm text-gray-900"><%= member.birthday %></dd>
+    </div>
 
-  <p>
-    <strong>Number of club games played:</strong>
-    <%= member.number_of_club_games_played %>
-  </p>
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Games Played</dt>
+      <dd class="text-sm text-gray-900"><%= member.number_of_club_games_played %></dd>
+    </div>
 
-  <p>
-    <strong>Current rank:</strong>
-    <%= member.current_rank %>
-  </p>
-
+    <div class="py-3 flex justify-between">
+      <dt class="text-sm font-medium text-gray-500">Current Rank</dt>
+      <dd class="text-sm text-gray-900 font-semibold"><%= member.current_rank %></dd>
+    </div>
+  </dl>
 </div>
