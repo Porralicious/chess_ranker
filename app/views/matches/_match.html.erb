@@ -1,17 +1,23 @@
-<div id="<%= dom_id match %>">
-  <p>
-    <strong>Player one:</strong>
-    <%= match.player_one_id %>
-  </p>
+<div id="<%= dom_id(@match) %>" class="max-w-xl mx-auto bg-white rounded-lg shadow-md border border-gray-200 p-6">
 
-  <p>
-    <strong>Player two:</strong>
-    <%= match.player_two_id %>
-  </p>
+  <div class="space-y-4">
+    <p class="text-lg">
+      <span class="font-semibold text-gray-600">♟️ Player One:</span>
+      <span class="text-gray-900"><%= @match.player_one.name %> <%= @match.player_one.surname %></span>
+    </p>
 
-  <p>
-    <strong>Winner:</strong>
-    <%= match.winner_id %>
-  </p>
+    <p class="text-lg">
+      <span class="font-semibold text-gray-600">♟️ Player Two:</span>
+      <span class="text-gray-900"><%= @match.player_two.name %> <%= @match.player_two.surname %></span>
+    </p>
 
+    <p class="text-lg">
+      <span class="font-semibold text-gray-600">🏆 Winner:</span>
+      <% if @match.winner.present? %>
+        <span class="text-green-700 font-semibold"><%= @match.winner.name %> <%= @match.winner.surname %></span>
+      <% else %>
+        <span class="text-gray-500 italic">Draw</span>
+      <% end %>
+    </p>
+  </div>
 </div>
