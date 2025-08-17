@@ -1,3 +1,13 @@
+<div class="flex flex-row w-full justify-end">
+  <div class="bg-gray-50 shadow rounded-lg p-4 mb-4 flex justify-end space-x-2 w-fit">
+    <%= link_to "✏️", edit_member_path(member),
+          class: "text-lg hover:scale-110 transition-transform", title: "Edit" %>
+
+    <%= link_to "🗑️", member,
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: "text-lg hover:scale-110 transition-transform", title: "Delete" %>
+  </div>
+</div>
 <div id="<%= dom_id member %>" class="bg-white shadow rounded-lg p-6 mb-4">
   <dl class="divide-y divide-gray-200">
     <div class="py-3 flex justify-between">
@@ -31,3 +41,4 @@
     </div>
   </dl>
 </div>
+
