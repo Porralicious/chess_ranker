@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: %i[ show edit update destroy ]
+  before_action :set_match, only: %i[ show ]
 
   # GET /matches or /matches.json
   def index
@@ -15,10 +15,6 @@ class MatchesController < ApplicationController
     @match = Match.new
   end
 
-  # GET /matches/1/edit
-  def edit
-  end
-
   # POST /matches or /matches.json
   def create
     @match = Match.new(match_params)
@@ -31,29 +27,6 @@ class MatchesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /matches/1 or /matches/1.json
-  def update
-    respond_to do |format|
-      if @match.update(match_params)
-        format.html { redirect_to @match, notice: "Match was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @match }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /matches/1 or /matches/1.json
-  def destroy
-    @match.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to matches_path, notice: "Match was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
     end
   end
 
