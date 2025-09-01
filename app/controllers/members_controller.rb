@@ -2,7 +2,7 @@ class MembersController < ApplicationController
     before_action :set_member, only: %i[show edit update destroy]
 
     def index
-        @members = Member.order(:current_rank)
+        @pagy, @members = pagy(Member.order(:current_rank))
     end
 
     def show

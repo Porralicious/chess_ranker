@@ -66,3 +66,5 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 4.3"
+# Use pagy for pagination of pages
+gem "pagy"
